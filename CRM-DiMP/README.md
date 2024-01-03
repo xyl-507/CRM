@@ -103,6 +103,6 @@ The results might be slightly different with [PySOT](https://github.com/STVIR/py
   
 
 ### Acknowledgement
-The code based on the [PyTracking](https://github.com/visionml/pytracking) , [SiamBAN](https://github.com/hqucv/siamban) ,
+The code based on the [PyTracking](https://github.com/visionml/pytracking),
 [Biformer](https://ieeexplore.ieee.org/document/10203555).
 We would like to express our sincere thanks to the contributors.
