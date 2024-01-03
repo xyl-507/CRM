@@ -1,6 +1,6 @@
 # CRM
 
-This project hosts the code for implementing the CRM-Siam algorithm for visual tracking, as presented in our paper: 
+This project hosts the code for implementing the CRM module for visual tracking, as presented in our paper: 
 
 ```
 Consistent Representation Mining for Multi-Drone Single Object Tracking
