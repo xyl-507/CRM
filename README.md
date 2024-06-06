@@ -25,13 +25,13 @@ The results show that the CRM-assisted trackers effectively improve the accuracy
 - [**[Models and Raw Results (Baidu)]**](https://pan.baidu.com/s/15ntlgipFTmzKDclilrEg1A?pwd=1234)
 
 
-### Multi-UAV Tracking
+### Multi-Drone Tracking
 
-| Model(arch+backbone)  | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
+| Model                 | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
 | --------------------  | :----------------: | :---------------: | :---------------:  |
-| SiamBAN(baseline)     |    0.394/0.570     |    0.426/0.619    |    0.363/0.521     |
+| SiamBAN (baseline)    |    0.394/0.570     |    0.426/0.619    |    0.363/0.521     |
 | CRM-Siam              |    0.401/0.602     |    0.417/0.627    |    0.385/0.577     |
-| Super-DiMP(baseline)  |    0.506/0.728     |    0.536/0.769    |    0.476/0.687     |
+| Super-DiMP (baseline) |    0.506/0.728     |    0.536/0.769    |    0.476/0.687     |
 | CRM-DiMP              |    0.524/0.759     |    0.535/0.774    |    0.513/0.743     |
 
 
