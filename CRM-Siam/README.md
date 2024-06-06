@@ -25,7 +25,7 @@ The paper can be downloaded from [IEEE Xplore]()
 [**[Models and Raw Results (Baidu)]**](https://pan.baidu.com/s/15ntlgipFTmzKDclilrEg1A?pwd=1234)
 
 ### Proposed modules
-- `CRM` in [model](https://github.com/xyl-507/CRM/CRM-Siam/siamban/models/MobileViTAttention.py)
+- `CRM` in [model](https://github.com/xyl-507/CRM/blob/main/CRM-Siam/siamban/models/MobileViTAttention.py)
 
 ### Multi-UAV Tracking
 
