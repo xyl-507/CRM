@@ -29,9 +29,9 @@ The paper can be downloaded from [IEEE Xplore]()
 
 ### Multi-UAV Tracking
 
-| Model(arch+backbone)  | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
+| Model                 | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
 | --------------------  | :----------------: | :---------------: | :---------------:  |
-| SiamBAN(baseline)     |    0.394/0.570     |    0.426/0.619    |    0.363/0.521     |
+| SiamBAN (baseline)    |    0.394/0.570     |    0.426/0.619    |    0.363/0.521     |
 | CRM-Siam              |    0.401/0.602     |    0.417/0.627    |    0.385/0.577     |
 
 

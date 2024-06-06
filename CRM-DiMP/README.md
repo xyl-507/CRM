@@ -32,9 +32,9 @@ The paper can be downloaded from [IEEE Xplore]()
 
 ### Multi-UAV Tracking
 
-| Model(arch+backbone)  | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
+| Model                 | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
 | --------------------  | :----------------: | :---------------: | :---------------:  |
-| Super-DiMP(baseline)  |    0.506/0.728     |    0.536/0.769    |    0.476/0.687     |
+| Super-DiMP (baseline) |    0.506/0.728     |    0.536/0.769    |    0.476/0.687     |
 | CRM-DiMP              |    0.524/0.759     |    0.535/0.774    |    0.513/0.743     |
 
 ## Installation
