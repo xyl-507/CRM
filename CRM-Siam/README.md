@@ -44,7 +44,8 @@ Please find installation instructions in [`INSTALL.md`](INSTALL.md).
 ### Add CRM-Siam to your PYTHONPATH
 
 ```bash
-export PYTHONPATH=/path/to/CRM-Siam:$PYTHONPATH
+export PYTHONPATH=/path/to/CRM-Siam:$PYTHONPATH (for linux)
+set PYTHONPATH=%PYTHONPATH%;/path/to/CRM-Siam (for windows)
 ```
 
 
