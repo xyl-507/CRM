@@ -75,12 +75,12 @@ Create the default environment setting files.
     # Environment settings for ltr. Saved at ltr/admin/local.py
     python -c "from ltr.admin.environment import create_default_local_file; create_default_local_file()"
     ```
-You can modify these files to set the paths to datasets, results paths etc.
-* Add the project path to environment variables  
-Open ~/.bashrc, and add the following line to the end. Note to change <path_of_CRM-DiMP> to your real path.
-    ```
-    export PYTHONPATH=<path_of_CRM-DiMP>:$PYTHONPATH
-    ```
+### Add CRM-DiMP to your PYTHONPATH
+```bash
+export PYTHONPATH=/path/to/CRM-DiMP:$PYTHONPATH (for linux)
+set PYTHONPATH=%PYTHONPATH%;/path/to/CRM-DiMP (for windows)
+```
+
 * Download the pre-trained networks   
 Download the network for [CRM-DiMP](https://pan.baidu.com/s/15ntlgipFTmzKDclilrEg1A?pwd=1234)
 and put it in the directory set by "network_path" in "pytracking/evaluation/local.py". By default, it is set to 
