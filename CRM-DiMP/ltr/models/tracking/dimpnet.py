@@ -11,7 +11,7 @@ from ltr.models.target_classifier import residual_modules
 import ltr.models.bbreg as bbmodels
 import ltr.models.backbone as backbones
 from ltr import model_constructor
-from ltr.models.attention.CRM import CRM
+from ltr.models.attention.MobileViTAttention import MobileViTAttention
 from ltr.admin import loading
 
 
@@ -33,7 +33,7 @@ class DiMPnet(nn.Module):
         self.classification_layer = [classification_layer] if isinstance(classification_layer, str) else classification_layer
         self.bb_regressor_layer = bb_regressor_layer
         self.output_layers = sorted(list(set(self.classification_layer + self.bb_regressor_layer)))
-        self.crm = CRM(in_channel=1024, dim=512)  # test = 512
+        self.mvt = MobileViTAttention(in_channel=1024, dim=512)  # test = 512
 
     def forward(self, train_imgs, test_imgs, train_bb, test_proposals, *args, **kwargs):
         """Runs the DiMP network the way it is applied during training.

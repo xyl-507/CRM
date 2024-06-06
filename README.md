@@ -1,9 +1,9 @@
 # CRM
 
-This project hosts the code for implementing the CRM module for visual tracking, as presented in our paper: 
-
+This project hosts the code for implementing the CRM algorithm of the 2024 IEEE Transactions on Circuits and Systems for Video Technology paper:
 ```
 Consistent Representation Mining for Multi-Drone Single Object Tracking
+(accepted by IEEE Transactions on Circuits and Systems for Video Technology, DOI: 10.1109/TCSVT.2024.3411301)
 ```
 
 Aerial tracking has received growing attention due to its widespread practical applications. 
@@ -18,10 +18,11 @@ Besides, the multi-view correction strategy is designed to ensure the timely cor
 Extensive experiments are conducted on the multi-drone dataset, MDOT. 
 The results show that the CRM-assisted trackers effectively improve the accuracy and robustness of the multi-drone tracking system and outperform other outstanding trackers.
 
+- The paper can be downloaded from [IEEE Xplore]()
 
-[**[Models and Raw Results]**](https://github.com/xyl-507/CRM/releases/tag/downloads)
+- [**[Models and Raw Results]**](https://github.com/xyl-507/CRM/releases/tag/downloads)
 
-[**[Models and Raw Results (Baidu)]**](https://pan.baidu.com/s/15ntlgipFTmzKDclilrEg1A?pwd=1234)
+- [**[Models and Raw Results (Baidu)]**](https://pan.baidu.com/s/15ntlgipFTmzKDclilrEg1A?pwd=1234)
 
 
 ### Multi-UAV Tracking

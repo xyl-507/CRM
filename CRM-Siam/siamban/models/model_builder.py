@@ -14,7 +14,7 @@ from siamban.models.loss import select_cross_entropy_loss, select_iou_loss
 from siamban.models.backbone import get_backbone
 from siamban.models.head import get_ban_head
 from siamban.models.neck import get_neck
-from siamban.models.CRM import CRM
+from siamban.models.MobileViTAttention import MobileViTAttention
 
 
 class ModelBuilder(nn.Module):
@@ -35,7 +35,7 @@ class ModelBuilder(nn.Module):
             self.head = get_ban_head(cfg.BAN.TYPE,
                                      **cfg.BAN.KWARGS)
         # MobileViTAttention 20231028
-        self.crm = CRM(in_channel=256, dim=256)  # zf = 256
+        self.mvt = MobileViTAttention(in_channel=256, dim=256)  # zf = 256
 
 
     def avg(self, lst):
