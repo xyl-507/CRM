@@ -18,7 +18,7 @@ Besides, the multi-view correction strategy is designed to ensure the timely cor
 Extensive experiments are conducted on the multi-drone dataset, MDOT. 
 The results show that the CRM-assisted trackers effectively improve the accuracy and robustness of the multi-drone tracking system and outperform other outstanding trackers.
 
-- The paper can be downloaded from [IEEE Xplore]()
+- The paper can be downloaded from [IEEE Xplore](https://ieeexplore.ieee.org/document/10551855)
 
 - [**[Models and Raw Results]**](https://github.com/xyl-507/CRM/releases/tag/downloads)
 
