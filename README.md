@@ -6,7 +6,7 @@ Consistent Representation Mining for Multi-Drone Single Object Tracking
 (accepted by IEEE Transactions on Circuits and Systems for Video Technology, DOI: 10.1109/TCSVT.2024.3411301)
 ```
 
-![image](xxx.png)
+![image](https://github.com/xyl-507/CRM/blob/main/figs/fig.jpg)
 
 Aerial tracking has received growing attention due to its widespread practical applications. 
 However, single-view aerial trackers are still limited by challenges such as severe appearance variations and occlusions. 

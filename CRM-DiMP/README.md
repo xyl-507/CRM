@@ -5,6 +5,7 @@ This project hosts the code for implementing the CRM-DiMP algorithm of the 2024 
 Consistent Representation Mining for Multi-Drone Single Object Tracking
 (accepted by IEEE Transactions on Circuits and Systems for Video Technology, DOI: 10.1109/TCSVT.2024.3411301)
 ```
+![image](https://github.com/xyl-507/CRM/blob/main/figs/fig.jpg)
 
 ## Tracker
 #### CRM-DiMP ####
