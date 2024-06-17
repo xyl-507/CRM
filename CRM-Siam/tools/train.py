@@ -96,7 +96,7 @@ def build_opt_lr(model, current_epoch=0):
         trainable_params += [{'params': model.neck.parameters(),
                               'lr': cfg.TRAIN.BASE_LR}]
 
-    trainable_params += [{'params': model.crm.parameters(),  # xyl 20231030
+    trainable_params += [{'params': model.mvt.parameters(),  # xyl 20231030
                           'lr': cfg.TRAIN.BASE_LR}]
 
     trainable_params += [{'params': model.head.parameters(),

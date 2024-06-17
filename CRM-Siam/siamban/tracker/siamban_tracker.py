@@ -348,5 +348,5 @@ class SiamBANTracker(SiameseTracker):
         return {
             'bbox': bbox,
             'best_score': best_score,
-            'counting': self.counting2
+            # 'counting': self.counting2
         }
