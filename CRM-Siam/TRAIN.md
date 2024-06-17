@@ -1,9 +1,9 @@
-# SiamBAN Training Tutorial
+# CRM-Siam Training Tutorial
 
-This implements training of SiamBAN.
-### Add SiamBAN to your PYTHONPATH
+This implements training of CRM-Siam.
+### Add CRM-Siam to your PYTHONPATH
 ```bash
-export PYTHONPATH=/path/to/smalltrack:$PYTHONPATH
+export PYTHONPATH=/path/to/CRM-Siam:$PYTHONPATH
 ```
 
 ## Prepare training dataset
@@ -22,7 +22,7 @@ Download pretrained backbones from [here](https://drive.google.com/drive/folders
 To train a model, run `train.py` with the desired configs:
 
 ```bash
-cd experiments/smalltrack_r50_l234
+cd experiments/siamban_r50_l234
 ```
 
 ### Multi-processing Distributed Data Parallel Training
@@ -39,30 +39,9 @@ python -m torch.distributed.launch \
 ```
 
 ## Testing
-After training, you can test snapshots on VOT dataset.
-For example, you need to test snapshots from 10 to 20 epoch.
-
-```bash 
-START=10
-END=20
-seq $START 1 $END | \
-    xargs -I {} echo "snapshot/checkpoint_e{}.pth" | \
-    xargs -I {} \ 
-    python -u ../../tools/test.py \
-        --snapshot {} \
-	--config config.yaml \
-	--dataset UAV20L 2>&1 | tee logs/test_dataset.log
-```
-
-Or:
 
 ```bash
-mpiexec -n 3 python ../../tools/test_epochs.py  \
-    --start_epoch 10  \
-    --end_epoch 20  \
-    --gpu_nums 3  \
-    --threads 3  \
-    --dataset UAV20L
+python -u ../../tools/test-multi.py --snapshot CRM-Siam.pth --config config-CRM-Siam.yaml --dataset MDOT
 ```
 
 ## Evaluation
@@ -70,7 +49,7 @@ mpiexec -n 3 python ../../tools/test_epochs.py  \
 ```bash
 python ../../tools/eval.py 	 \
 	--tracker_path ./results \ # result path
-	--dataset UAV20L        \ # dataset name
+	--dataset MDOT        \ # dataset name
 	--num 4 		 \ # number thread to eval
 	--tracker_prefix 'ch*'   # tracker_name
 ```
