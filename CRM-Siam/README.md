@@ -95,3 +95,19 @@ See [TRAIN.md](TRAIN.md) for detailed instruction.
 The code based on the [PySOT](https://github.com/STVIR/pysot) , [SiamBAN](https://github.com/hqucv/siamban) ,
 [Biformer](https://ieeexplore.ieee.org/document/10203555).
 We would like to express our sincere thanks to the contributors.
+
+### Citation:
+If you find this work useful for your research, please cite the following papers:
+```
+@ARTICLE{10551855,
+author={Xue, Yuanliang and Jin, Guodong and Shen, Tao and Tan, Lining and Wang, Nian and Gao, Jing and Wang, Lianfeng},
+journal={IEEE Transactions on Circuits and Systems for Video Technology},
+title={Consistent Representation Mining for Multi-Drone Single Object Tracking},
+year={2024},
+volume={},
+number={},
+pages={1-1},
+keywords={Target tracking;Customer relationship management;Transformers;Drones;Visualization;Lighting;Object tracking;Aerial tracking;multi-drone tracking;consistent representation mining;reliable region selection;sparse self-attention},
+doi={10.1109/TCSVT.2024.3411301}}
+```
+If you have any questions about this work, please contact with me via xyl_507@outlook.com
