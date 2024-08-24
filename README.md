@@ -30,6 +30,8 @@ The results show that the CRM-assisted trackers effectively improve the accuracy
 
 - [**[Json file for CRM-Siam testing]**](https://github.com/xyl-507/CRM/releases/tag/Json)
 
+- The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/video/BV16DWQePEks/)
+
 ### Multi-Drone Tracking
 
 | Model                 | MDOT (Suc./Pre.)   | Drone1 (Suc./Pre.)| Drone2 (Suc./Pre.) |
