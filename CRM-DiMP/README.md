@@ -102,7 +102,7 @@ pytracking/networks.
 
 * CUDA_VISIBLE_DEVICES=1
     ```bash
-    python pytracking/run_tracker.py atom default --dataset_name uav --sequence bike1 --debug 0 --threads 0
+    python pytracking/run_tracker.py dimp super_dimp --dataset_name uav --sequence bike1 --debug 0 --threads 0
     python pytracking/run_experiment.py myexperiments uav_test_xyl --debug 0 --threads 0
     ```
 
