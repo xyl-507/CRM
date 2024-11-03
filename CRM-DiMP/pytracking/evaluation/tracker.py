@@ -263,8 +263,8 @@ class Tracker:
             info2 = seq2.frame_info(frame_num)
             info2['previous_output'] = prev_output2
 
-            out = tracker.track(image, info)  # 跟踪后续帧
-            out2 = tracker.track2(image2, info2)  # 跟踪后续帧
+            out, counting = tracker.track(image, info)  # 跟踪后续帧
+            out2, counting2 = tracker.track2(image2, info2)  # 跟踪后续帧
 
             prev_output = OrderedDict(out)
             _store_outputs(out, {'time': time.time() - start_time})
