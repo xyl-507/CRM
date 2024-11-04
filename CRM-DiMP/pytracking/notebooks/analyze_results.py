@@ -14,22 +14,23 @@ from pytracking.analysis.plot_results import plot_results, print_results, print_
 from pytracking.evaluation import Tracker, get_dataset, trackerlist, get_dataset_attributes
 # 待评估的跟踪器
 trackers = []
-trackers.extend(trackerlist('atom', 'default', range(0, 1), 'ATOM'))  # range(0,5) 代表是测五个算法
+# trackers.extend(trackerlist('atom', 'default', range(0, 1), 'ATOM'))  # range(0,5) 代表是测五个算法
 # trackers.extend(trackerlist('dimp', 'dimp18', range(0,5), 'DiMP18'))
 # trackers.extend(trackerlist('dimp', 'dimp50', range(0,5), 'DiMP50'))
 # trackers.extend(trackerlist('dimp', 'prdimp18', range(0,5), 'PrDiMP18'))
 # trackers.extend(trackerlist('dimp', 'prdimp50', range(0,5), 'PrDiMP50'))
+trackers.extend(trackerlist('dimp', 'super_dimp', range(0,5), 'PrDiMP50'))
 # 待评估的数据集
-dataset = get_dataset('uav')
+dataset = get_dataset('mdot')
 # dataset = get_dataset('uav', 'dtb', 'uavdt')
 
 # ----------------------------------------------------------- Plots for UAV， 画成功率和准确率的图
 # 图片保存在 /home/xyl/xyl-code/pytracking-master/pytracking/result_plots
-plot_results(trackers, dataset, 'UAV', merge_results=True, plot_types=('success', 'prec'),
+plot_results(trackers, dataset, 'mdot', merge_results=True, plot_types=('success', 'prec'),
              skip_missing_seq=False, force_evaluation=True, plot_bin_gap=0.05, exclude_invalid_frames=False)
 
 # ----------------------------------------------------------- Tables for UAV 打印数据集的总的结果
-print_results(trackers, dataset, 'UAV', merge_results=True, plot_types=('success', 'prec', 'norm_prec'))
+print_results(trackers, dataset, 'mdot', merge_results=True, plot_types=('success', 'prec', 'norm_prec'))
 
 # ----------------------------------------------------------- Print per sequence results for all sequences 打印每个序列上的结果
 # filter_criteria = None
@@ -45,7 +46,7 @@ print_results(trackers, dataset, 'UAV', merge_results=True, plot_types=('success
 
 # ----------------------------------------------------------- plot_attributes_radar  画雷达图
 plot_attributes_radar(trackers,
-                      get_dataset_attributes('uav', mode='long'), 'UAV',
+                      get_dataset_attributes('mdot', mode='long'), 'mdot',
                       merge_results=True, force_evaluation=False,
                       skip_missing_seq=True,
                       plot_opts=None, exclude_invalid_frames=False)
