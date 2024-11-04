@@ -91,7 +91,7 @@ pytracking/networks.
 ## Quick Start
 #### Traning
 * Modify [local.py](ltr/admin/local.py) to set the paths to datasets, results paths etc.
-* Runing the following commands to train the CRM-DiMP. You can customize some parameters by modifying [CRM-DiMP.py](ltr/train_settings/CRM-DiMP/CRM-DiMP.py)
+* Runing the following commands to train the CRM-DiMP. You can customize some parameters by modifying [super_dimp.py](ltr/train_settings/dimp/super_dimp.py)
     ```bash
     conda activate CRM-DiMP
     cd CRM-DiMP/ltr
