@@ -58,7 +58,7 @@ class DiMPnet(nn.Module):
         train_feat_clf = self.get_backbone_clf_feat(train_feat)  # (60,1024,22,22)
         test_feat_clf = self.get_backbone_clf_feat(test_feat)  # (60,1024,22,22)
 
-        test_feat_clf = self.crm(test_feat_clf)  # bra module xyl20231210
+        test_feat_clf = self.mvt(test_feat_clf)  # bra module xyl20231210
 
         # Run classifier module
         target_scores = self.classifier(train_feat_clf, test_feat_clf, train_bb, *args, **kwargs) # train_bb (3,20,4), target_scores list:6 (3,18,23,23)
