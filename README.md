@@ -42,6 +42,19 @@ The results show that the CRM-assisted trackers effectively improve the accuracy
 | CRM-DiMP              |    0.524/0.759     |    0.535/0.774    |    0.513/0.743     |
 
 
+### Data Preparation
+The tracking datasets should look like:
+```
+${PROJECT_ROOT}
+  -- testingset
+      -- MDOT
+          |-- md2001-1
+          |-- md2001-2
+          |-- md2002-1
+          |-- md2002-2
+          ...
+```
+
 ### Acknowledgement
 The code based on the [PyTracking](https://github.com/visionml/pytracking), [PySOT](https://github.com/STVIR/pysot) , [SiamBAN](https://github.com/hqucv/siamban) ,
 [Biformer](https://ieeexplore.ieee.org/document/10203555).
