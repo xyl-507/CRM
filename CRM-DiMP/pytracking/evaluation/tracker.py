@@ -317,7 +317,7 @@ class Tracker:
         #         f.write(str(x) + '\n')
         return output, output2
 
-    def run_video_generic(self, debug=None, visdom_info=None, videofilepath=None, optional_box=None,
+    def run_video_generic(self, debug=None, visdom_info=None, videofilepath=None, videofilepath2=None, optional_box=None,
                           save_results=False):
         """Run the tracker with the webcam or a provided video file.
         args:
@@ -387,6 +387,7 @@ class Tracker:
         cv.setMouseCallback(display_name, ui_control.mouse_callback)
 
         frame_number = 0
+        frame_number2 = 0
 
         if videofilepath is not None:
             assert os.path.isfile(videofilepath), "Invalid param {}".format(videofilepath)
@@ -398,11 +399,22 @@ class Tracker:
         else:
             cap = cv.VideoCapture(0)
 
+        if videofilepath2 is not None:
+            assert os.path.isfile(videofilepath2), "Invalid param {}".format(videofilepath2)
+            ", videofilepath must be a valid videofile"
+            cap2 = cv.VideoCapture(videofilepath2)
+            ret2, frame2 = cap2.read()
+            frame_number2 += 1
+            cv.imshow(display_name, frame2)
+        else:
+            cap2 = cv.VideoCapture(0)
+
         next_object_id = 1
         sequence_object_ids = []
         prev_output = OrderedDict()
         output_boxes = OrderedDict()
-
+        prev_output2 = OrderedDict()
+        output_boxes2 = OrderedDict()
         if optional_box is not None:
             assert isinstance(optional_box, (list, tuple))
             assert len(optional_box) == 4, "valid box's format is [x,y,w,h]"
@@ -411,10 +423,16 @@ class Tracker:
                                              'init_object_ids': [next_object_id, ],
                                              'object_ids': [next_object_id, ],
                                              'sequence_object_ids': [next_object_id, ]})
-
+            out2 = tracker.initialize(frame2, {'init_bbox': OrderedDict({next_object_id: optional_box}),
+                                               'init_object_ids': [next_object_id, ],
+                                               'object_ids': [next_object_id, ],
+                                               'sequence_object_ids': [next_object_id, ]})
             prev_output = OrderedDict(out)
+            prev_output2 = OrderedDict(out2)
 
             output_boxes[next_object_id] = [optional_box, ]
+            output_boxes2[next_object_id] = [optional_box, ]
+
             sequence_object_ids.append(next_object_id)
             next_object_id += 1
 
@@ -429,31 +447,42 @@ class Tracker:
                 frame_number += 1
                 if frame is None:
                     break
-
+                ret2, frame2 = cap2.read()
+                frame_number2 += 1
+                if frame2 is None:
+                    break
             frame_disp = frame.copy()
+            frame_disp2 = frame2.copy()
 
             info = OrderedDict()
             info['previous_output'] = prev_output
+            info['previous_output2'] = prev_output2
 
             if ui_control.new_init:
                 ui_control.new_init = False
                 init_state = ui_control.get_bb()
+                init_state2 = ui_control.get_bb()
 
                 info['init_object_ids'] = [next_object_id, ]
                 info['init_bbox'] = OrderedDict({next_object_id: init_state})
+                info['init_bbox2'] = OrderedDict({next_object_id: init_state2})
                 sequence_object_ids.append(next_object_id)
                 if save_results:
                     output_boxes[next_object_id] = [init_state, ]
+                    output_boxes2[next_object_id] = [init_state2, ]
                 next_object_id += 1
 
             # Draw box
             if ui_control.mode == 'select':
                 cv.rectangle(frame_disp, ui_control.get_tl(), ui_control.get_br(), (255, 0, 0), 2)
+                cv.rectangle(frame_disp2, ui_control.get_tl(), ui_control.get_br(), (255, 0, 0), 2)
 
             if len(sequence_object_ids) > 0:
                 info['sequence_object_ids'] = sequence_object_ids
                 out = tracker.track(frame, info)
+                out2 = tracker.track2(frame2, info)
                 prev_output = OrderedDict(out)
+                prev_output2 = OrderedDict(out2)
 
                 if 'segmentation' in out:
                     frame_disp = overlay_mask(frame_disp, out['segmentation'])
@@ -472,20 +501,29 @@ class Tracker:
                                      _tracker_disp_colors[obj_id], 5)
                         if save_results:
                             output_boxes[obj_id].append(state)
-
+                if 'target_bbox' in out2:
+                    for obj_id, state in out2['target_bbox'].items():
+                        state = [int(s) for s in state]
+                        cv.rectangle(frame_disp2, (state[0], state[1]), (state[2] + state[0], state[3] + state[1]),
+                                     _tracker_disp_colors[obj_id], 5)
+                        if save_results:
+                            output_boxes2[obj_id].append(state)
             # Put text
             font_color = (255, 255, 255)
             msg = "Select target(s). Press 'r' to reset or 'q' to quit."
             cv.rectangle(frame_disp, (5, 5), (630, 40), (50, 50, 50), -1)
             cv.putText(frame_disp, msg, (10, 30), cv.FONT_HERSHEY_COMPLEX_SMALL, 1, font_color, 2)
-
+            cv.rectangle(frame_disp2, (5, 5), (630, 40), (50, 50, 50), -1)
+            cv.putText(frame_disp2, msg, (10, 30), cv.FONT_HERSHEY_COMPLEX_SMALL, 1, font_color, 2)
             if videofilepath is not None:
                 msg = "Press SPACE to pause/resume the video."
                 cv.rectangle(frame_disp, (5, 50), (530, 90), (50, 50, 50), -1)
                 cv.putText(frame_disp, msg, (10, 75), cv.FONT_HERSHEY_COMPLEX_SMALL, 1, font_color, 2)
-
+                cv.rectangle(frame_disp2, (5, 50), (530, 90), (50, 50, 50), -1)
+                cv.putText(frame_disp2, msg, (10, 75), cv.FONT_HERSHEY_COMPLEX_SMALL, 1, font_color, 2)
             # Display the resulting frame
             cv.imshow(display_name, frame_disp)
+            cv.imshow(display_name, frame_disp2)
             key = cv.waitKey(1)
             if key == ord('q'):
                 break
@@ -493,6 +531,7 @@ class Tracker:
                 next_object_id = 1
                 sequence_object_ids = []
                 prev_output = OrderedDict()
+                prev_output2 = OrderedDict()
 
                 info = OrderedDict()
 
@@ -500,6 +539,7 @@ class Tracker:
                 info['init_object_ids'] = []
                 info['init_bbox'] = OrderedDict()
                 tracker.initialize(frame, info)
+                tracker.initialize2(frame2, info)
                 ui_control.mode = 'init'
             # 'Space' to pause video
             elif key == 32 and videofilepath is not None:
@@ -513,11 +553,17 @@ class Tracker:
             if not os.path.exists(self.results_dir):
                 os.makedirs(self.results_dir)
             video_name = "webcam" if videofilepath is None else Path(videofilepath).stem
+            video_name2 = "webcam" if videofilepath is None else Path(videofilepath2).stem
             base_results_path = os.path.join(self.results_dir, 'video_{}'.format(video_name))
+            base_results_path2 = os.path.join(self.results_dir, 'video_{}'.format(video_name2))
             print(f"Save results to: {base_results_path}")
             for obj_id, bbox in output_boxes.items():
                 tracked_bb = np.array(bbox).astype(int)
                 bbox_file = '{}_{}.txt'.format(base_results_path, obj_id)
+                np.savetxt(bbox_file, tracked_bb, delimiter='\t', fmt='%d')
+            for obj_id, bbox in output_boxes2.items():
+                tracked_bb = np.array(bbox).astype(int)
+                bbox_file = '{}_{}.txt'.format(base_results_path2, obj_id)
                 np.savetxt(bbox_file, tracked_bb, delimiter='\t', fmt='%d')
 
     def run_vot2020(self, debug=None, visdom_info=None):
